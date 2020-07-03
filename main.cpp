@@ -9,7 +9,7 @@
 #endif
 
 #include "base.h"
-#include "canvas.cpp"
+#include "Canvas.cpp"
 
 IMPLEMENT_APP(MainApp) // Initializes the MainApp class...
 

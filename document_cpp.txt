@@ -1,0 +1,38 @@
+Enviroment to use : Mac OS
+Compilations: 
+               executbales are already provided just run : brew install wxwidgets --HEAD && ./q2
+  
+               if you need to re build the exetubales: make clean &&  make all && ./q
+
+               additionally you  need to install the following UI library using brew. 
+
+              `brew install wxwidgets --HEAD` if you dont already have wxWidgets
+
+
+Code structure: 
+      wav.h 
+           Header:
+               - the class for the wav file format 
+
+          - Wav:
+               - is responsible for reading and parsing the Header and Data
+               - wav::Reader() parses the header -> reads the data -> closes the file 
+        
+       base.h and Main.cpp:
+           - responsible for the UI aspects and contains the main frame
+           - Open will open a new file exploarer that only lets you open Wav formatted files.
+           - Quit will quit. 
+
+
+      canvas.h and Canvas.cpp:
+          - responsible for displaying the wav files 
+          - has a Wav member variable for the wav data. 
+          - draws the wav files on the screen 
+      
+Features: 
+         you can have multiple Wav files open. after opening 1, simply just press open again to have multiple open at the same time 
+         It will display the file you openend and also the number of samples in that wav file 
+         displays the wav in a different frame than the orignal hence multiple can be open at the same time 
+         the butotns are resizable, when you change the size of the window it wil shrink/expand 
+         the file opener is programmed to only allow .wav files to open and nothing else
+
