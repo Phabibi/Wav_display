@@ -28,7 +28,14 @@ Code structure:
           - responsible for displaying the wav files 
           - has a Wav member variable for the wav data. 
           - draws the wav files on the screen 
-      
+
+
+Calla stack: 
+
+     - Open file (base.h -> open EVT is triggered thus openfile() function that will A) open up th file browser B) gives you options to only open wav fils) -> *after openining desired file
+                 -> Canvas.cpp(Draw() function is called to set the layout of the canvas and get it ready for rendering) -> render() ( willl start drawing the data by constructing the Wav class using the given path) ->
+                    wav.h ( Reader()  will start reading the wav file , seperates the header and logs info to console, populates the data object) -> fade in and fade out will start after the data object has been retrieved prope                    I made the graph to be 2000x300, thus half the width = 1000 , half the height = 150 inorder to draw the 0 -> + and bottom half - -> 0 ;
+     - Quit ( Main.cpp will just triger the quit() event that will quit the window, note it wont quit the canvas, you must close canvasases individually)  
 Features: 
          you can have multiple Wav files open. after opening 1, simply just press open again to have multiple open at the same time 
          It will display the file you openend and also the number of samples in that wav file 
