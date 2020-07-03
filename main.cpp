@@ -9,7 +9,7 @@
 #endif
 
 #include "base.h"
-#include "Canvas.cpp"
+#include "canvas.cpp"
 
 IMPLEMENT_APP(MainApp) // Initializes the MainApp class...
 
@@ -63,12 +63,19 @@ void MainFrame::OpenFile(wxCommandEvent& WXUNUSED(event))
             else
             {
               CurrentDocPath = OpenDialog->GetPath();
-              
+
+              Header head;
+              WavReader wav;
+
+              const char* path  = CurrentDocPath.mb_str();
+              wav.Reader(head, const_cast<char*>(path));
               //[TODO] we jklshould interpret the data for wav and draw it.
                
+              
               Canvas* canvas = new Canvas(reinterpret_cast<wxFrame*>(this));
+              canvas->wav = wav;
+              canvas->file_path = CurrentDocPath;
               canvas->Draw();
-              std::cout << "the file path is " << CurrentDocPath;
             }
 
 }
