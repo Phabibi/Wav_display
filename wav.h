@@ -52,7 +52,6 @@ void WavReader::Reader(Header head, char* path)
     int head_len= sizeof(Header);
 
     
-  //  std::cout << " the headr size is : " << head_len << std::endl;
 
     // reading the file 
     FILE* file = fopen(path,"r");
@@ -71,10 +70,6 @@ void WavReader::Reader(Header head, char* path)
         float bytesPerSample = head.BitsPerSample/8;
         //Total number of samples in the file
         //
-        // we want this buffer size to not change in memory thus define it as static
-        // 4096 is the wav size 
-        //
-        static int16_t BUFFER_SIZE = 4096;
         int count = 0;  
         int sampleCount = head.dataSize*8 / head.BitsPerSample; 
         int16_t* buffer = new int16_t[2*sampleCount];
@@ -85,13 +80,11 @@ void WavReader::Reader(Header head, char* path)
         while ((read_head = fread(this->data, head.BitsPerSample/8 ,sampleCount , file)) > 0)
         {
             //keep track for deep copy 
+           //  std::cout << "ay kheeeeeeeeda " << std::endl;
             count++;
 
-            /** DO SOMETHING WITH THE WAVE DATA HERE **/
                 
         }
-        //free the buffer
-
 
         //set our sample count
         this->sampleCount = sampleCount;
